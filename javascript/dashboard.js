@@ -1,11 +1,6 @@
-// =========================
-// GLOBAL STATE
-// =========================
 let allBooks = [];
 
-// =========================
-// INIT
-// =========================
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const user = JSON.parse(localStorage.getItem('user'));
@@ -14,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const navRight = document.getElementById('nav-right');
     const logoutBtn = document.getElementById('logout-btn');
 
-    // NAVBAR (PUBLIC BROWSING)
+    // NAVBAR 
     if (navRight) {
         if (user && isLoggedIn) {
             const username = user.email.split('@')[0];
@@ -36,12 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // SHOW/HIDE LOGOUT
+    // SHOW/HIDE Logout button
     if (logoutBtn) {
         logoutBtn.style.display = (user && isLoggedIn) ? "flex" : "none";
     }
 
-    // AUTO LOAD BOOKS (IMPORTANT FIX)
+
     loadDefaultBooks();
 });
 
@@ -49,9 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
 function toggleDarkMode() {
   document.documentElement.classList.toggle("dark");
 }
-// =========================
+
 // LOAD DEFAULT BOOKS
-// =========================
+
 async function loadDefaultBooks() {
     const container = document.getElementById("book-results");
 
@@ -74,9 +69,7 @@ async function loadDefaultBooks() {
 }
 
 
-// =========================
 // SEARCH BOOKS
-// =========================
 async function searchBooks(event) {
     if (event) event.preventDefault();
 
@@ -104,9 +97,8 @@ async function searchBooks(event) {
 }
 
 
-// =========================
-// RENDER BOOKS (FILTER + SORT)
-// =========================
+// FILTER + SORT
+
 function renderBooks() {
     const container = document.getElementById("book-results");
 
@@ -186,15 +178,14 @@ function renderBooks() {
 }
 
 
-// =========================
+
 // FILTER EVENTS
-// =========================
 document.getElementById("sort-filter")?.addEventListener("change", renderBooks);
 document.getElementById("has-cover")?.addEventListener("change", renderBooks);
 
 
 
-// BORROW BOOK (PROTECTED)
+// BORROW BOOK 
 
 function orderBook(title, author, cover) {
 
