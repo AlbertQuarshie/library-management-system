@@ -1,6 +1,5 @@
 let allBooks = [];
 
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const user = JSON.parse(localStorage.getItem('user'));
@@ -36,17 +35,32 @@ document.addEventListener("DOMContentLoaded", () => {
         logoutBtn.style.display = (user && isLoggedIn) ? "flex" : "none";
     }
 
-
     loadDefaultBooks();
 });
 
 
+// ✅ SIDEBAR (from first version)
+function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  const icon = document.getElementById("toggle-icon");
+
+  sidebar.classList.toggle("w-64");
+  sidebar.classList.toggle("w-20");
+  icon.classList.toggle("rotate-180");
+
+  document
+    .querySelectorAll(".sidebar-content")
+    .forEach((el) => el.classList.toggle("hidden"));
+}
+
+
+// DARK MODE
 function toggleDarkMode() {
   document.documentElement.classList.toggle("dark");
 }
 
-// LOAD DEFAULT BOOKS
 
+// LOAD DEFAULT BOOKS
 async function loadDefaultBooks() {
     const container = document.getElementById("book-results");
 
@@ -98,7 +112,6 @@ async function searchBooks(event) {
 
 
 // FILTER + SORT
-
 function renderBooks() {
     const container = document.getElementById("book-results");
 
@@ -107,12 +120,10 @@ function renderBooks() {
     const sortValue = document.getElementById("sort-filter")?.value;
     const hasCoverOnly = document.getElementById("has-cover")?.checked;
 
-    // FILTER: COVER ONLY
     if (hasCoverOnly) {
         books = books.filter(book => book.cover_i);
     }
 
-    // SORT
     if (sortValue === "title-asc") {
         books.sort((a, b) => (a.title || "").localeCompare(b.title || ""));
     }
@@ -151,12 +162,10 @@ function renderBooks() {
         const card = `
             <div class="bg-white dark:bg-gray-700 p-4 rounded-xl shadow border dark:border-gray-600 flex flex-col">
 
-                <!-- IMAGE -->
                 <div class="w-full h-48 overflow-hidden rounded-md mb-3 bg-gray-200 dark:bg-gray-600">
-                    <img src="${coverUrl}" class="w-full h-full object-cover object-center">
+                    <img src="${coverUrl}" class="w-full h-full object-contain">
                 </div>
 
-                <!-- TEXT -->
                 <h4 class="font-bold text-sm dark:text-white">${title}</h4>
                 <p class="text-xs text-gray-500">${author}</p>
 
@@ -164,7 +173,6 @@ function renderBooks() {
                     Year: ${year}
                 </p>
 
-                <!-- BORROW BUTTON -->
                 <button onclick="orderBook('${title}', '${author}', '${coverUrl}')"
                     class="mt-auto w-full py-1 text-xs bg-blue-100 text-blue-700 rounded">
                     Borrow
@@ -178,15 +186,12 @@ function renderBooks() {
 }
 
 
-
 // FILTER EVENTS
 document.getElementById("sort-filter")?.addEventListener("change", renderBooks);
 document.getElementById("has-cover")?.addEventListener("change", renderBooks);
 
 
-
 // BORROW BOOK 
-
 function orderBook(title, author, cover) {
 
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
@@ -200,19 +205,17 @@ function orderBook(title, author, cover) {
 
     const borrowed = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
 
-    // LIMIT 5 BOOKS
     if (borrowed.length >= 5) {
         alert("You can only borrow up to 5 books.");
         return;
     }
 
-    // NO DUPLICATES
     if (borrowed.some(b => b.title === title)) {
         alert("You already borrowed this book.");
         return;
     }
 
-    const confirmBorrow = confirm(`Borrow "${title}" for 2 weeks?`);
+    const confirmBorrow = confirm(`Borrow "${title}"`);
     if (!confirmBorrow) return;
 
     const borrowDate = new Date();
@@ -233,10 +236,8 @@ function orderBook(title, author, cover) {
 }
 
 
-
-// LOGOUT
+// LOGOUT (your chosen version)
 function logout() {
-    localStorage.removeItem('user');
-    localStorage.removeItem('isLoggedIn');
+    localStorage.setItem('isLoggedIn', 'false');
     window.location.href = "index.html";
 }

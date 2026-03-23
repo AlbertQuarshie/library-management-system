@@ -115,13 +115,12 @@ function displayBorrowedBooks() {
       }
     }
 
-  const card = `
+ const card = `
     <div class="bg-white dark:bg-gray-700 p-4 rounded-xl shadow border dark:border-gray-600 flex flex-col h-full">
 
-        <!-- IMAGE -->
-        <div class="w-full h-48 overflow-hidden rounded-md mb-3 bg-gray-200 dark:bg-gray-600">
-            <img src="${book.cover}"
-                class="w-full h-full object-cover object-center">
+        <!-- IMAGE FIXED -->
+        <div class="w-full h-48 flex items-center justify-center rounded-md mb-3 bg-gray-200 dark:bg-gray-600">
+           <img src="${book.cover}" class="max-h-full max-w-full object-contain">
         </div>
 
         <!-- TEXT SECTION -->
@@ -147,7 +146,7 @@ function displayBorrowedBooks() {
             </p>
         </div>
 
-        <!-- BUTTON FIXED AT BOTTOM -->
+        <!-- BUTTON -->
         <button onclick="returnBook(${index})"
             class="mt-3 w-full py-1 text-xs bg-red-100 text-red-600 rounded hover:bg-red-200">
             Return
@@ -175,7 +174,6 @@ function returnBook(index) {
 
 // LOGOUT
 function logout() {
-  localStorage.removeItem("user");
-  localStorage.removeItem("isLoggedIn");
-  window.location.href = "index.html";
+    localStorage.setItem('isLoggedIn', 'false');
+    window.location.href = "index.html";
 }

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Literary Oasis | Login</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="flex flex-col min-h-screen bg-[#cfd4d6]">
+  <header class="flex-grow">
+  <nav
+    class="flex items-center justify-between flex-wrap bg-[#111214] py-4 lg:px-12 shadow border-solid "
+  >
+    <div
+      class="flex justify-between lg:w-auto w-full items-center pl-6 pr-6 lg:border-b-0 border-solid border-b-2 border-gray-700 pb-5 lg:pb-0"
+    >
+      <div class="flex items-center flex-shrink-0 mr-16 text-white text-2xl font-bold">
+            <a href="index.html">
+              <h1>Literary<span class="text-[#8BAE66]"> Oasis</span></h1>
+            </a>
+          </div>
+
+      <div class="block lg:hidden">
+        <button
+          id="nav-toggle"
+          class="flex items-center px-3 py-2 border-2 rounded text-[#FFCB9B] border-[#FFCB9B] hover:text-white hover:border-white"
+        >
+          <svg
+            class="fill-current h-3 w-3"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    
+  </nav>
+</header>
+
+ <div class="flex-grow flex items-center justify-center py-12 px-4">
+      <div class="max-w-md w-full mx-auto border border-gray-300 rounded-2xl p-8 bg-gray-200 shadow-sm">
+        <div class="text-center mb-8">
+ 
+             <h1 class="text-4xl font-bold">Literary<span class="text-[#8BAE66]"> Oasis</span></h1>
+          </a>
+          <h2 class="text-2xl font-bold text-slate-900 mt-4">Login to your account</h2>
+        </div>
+
+        <form id="loginForm">
+  <div class="space-y-5">
+
+    <!-- Email -->
+    <div>
+      <label for="email" class="text-slate-900 text-sm font-medium mb-2 block">
+        Email
+      </label>
+      <input 
+        id="email"
+        name="email"
+        type="email"
+        required
+        class="text-slate-900 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
+        placeholder="Enter email"
+      />
+    </div>
+
+    <!-- Password -->
+    <div>
+      <label for="password" class="text-slate-900 text-sm font-medium mb-2 block">
+        Password
+      </label>
+      <input 
+        id="password"
+        name="password"
+        type="password"
+        required
+        class="text-slate-900 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
+        placeholder="Enter password"
+      />
+    </div>
+
+  </div>
+
+  <div class="mt-10">
+    <button 
+      type="submit"
+      class="w-full py-3 px-4 text-sm tracking-wider font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+      Login
+    </button>
+  </div>
+
+  <p class="text-slate-600 text-sm mt-6 text-center">
+    Don't have an account?
+    <a href="signup.html" class="text-blue-600 font-medium hover:underline ml-1">
+      Register here
+    </a>
+  </p>
+</form>
+      </div>
+    </div>
+
+ <footer class="bg-[#111214] text-white py-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+
+    <h2 class="text-2xl font-bold">
+      Literary<span class="text-[#8BAE66]"> Oasis</span>
+    </h2>
+
+    <div class="flex justify-center space-x-8 mt-6 text-xl">
+      <a href="mailto:youremail@example.com" class="hover:text-[#8BAE66] transition">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://facebook.com" target="_blank" class="hover:text-[#8BAE66] transition">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="https://x.com" target="_blank" class="hover:text-[#8BAE66] transition">
+        <i class="fab fa-x-twitter"></i>
+      </a>
+      <a href="https://github.com" target="_blank" class="hover:text-[#8BAE66] transition">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+
+   
+    <p class="text-gray-400 text-sm mt-6">
+      © 2026 Literary Oasis. All rights reserved.
+    </p>
+
+  </div>
+</footer>
+   <script src="javascript/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Literary Oasis | Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script>
+      tailwind.config = { darkMode: "class" };
+    </script>
+  </head>
+
+  <body
+    class="bg-gray-100 dark:bg-gray-800 transition-colors duration-300 flex flex-col h-screen overflow-hidden"
+  >
+    <header
+      class="bg-[#111214] py-4 px-6 lg:px-12 shadow flex justify-between items-center text-white z-50 flex-shrink-0"
+    >
+      <div class="text-xl font-bold">
+        Literary<span class="text-[#8BAE66]"> Oasis</span>
+      </div>
+
+      <div id="nav-right" class="flex items-center space-x-4"></div>
+    </header>
+
+    <div class="flex flex-1 overflow-hidden">
+      <aside
+        id="sidebar"
+        class="flex flex-col w-64 h-full px-5 py-8 bg-white border-r dark:bg-gray-900 dark:border-gray-700 transition-all duration-300 relative flex-shrink-0"
+      >
+        <button
+          onclick="toggleSidebar()"
+          class="absolute -right-3 top-10 z-50 bg-white dark:bg-gray-800 border rounded-full p-1 shadow-md"
+        >
+          <svg
+            id="toggle-icon"
+            class="w-4 h-4 text-gray-600 dark:text-gray-300"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <nav class="space-y-6">
+          <div class="space-y-3">
+            <label class="sidebar-content px-3 text-xs text-gray-500 uppercase">
+              Dashboard
+            </label>
+
+            <a
+              href="dashboard.html"
+              class="flex items-center gap-3 px-3 py-2 text-gray-700 rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+
+              <span class="sidebar-content text-sm font-medium">Explore</span>
+            </a>
+
+            <a
+              href="borrowed.html"
+              class="flex items-center gap-3 px-3 py-2 text-gray-700 rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18c-2.305 0-4.408.867-6 2.292m0-14.25v14.25"
+                />
+              </svg>
+
+              <span class="sidebar-content text-sm font-medium"
+                >Borrowed Books</span
+              >
+            </a>
+          </div>
+        </nav>
+
+        <!-- LOGOUT -->
+        <button
+          id="logout-btn"
+          onclick="logout()"
+          class="mt-auto flex items-center gap-3 px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 002 2h4a2 2 0 002-2V7a2 2 0 00-2-2h-4a2 2 0 00-2 2v1"
+            />
+          </svg>
+
+          <span class="sidebar-content text-sm font-medium">Logout</span>
+        </button>
+
+        <button
+          onclick="toggleDarkMode()"
+          class="mt-4 flex items-center gap-3 px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 3v1m0 16v1m8.66-10H21M3 12H2m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"
+            />
+          </svg>
+
+          <span class="sidebar-content text-sm font-medium">Toggle Theme</span>
+        </button>
+      </aside>
+
+      <main class="flex-1 overflow-y-auto p-6 lg:p-12">
+        <div class="max-w-4xl mx-auto">
+          <form class="mb-8" onsubmit="searchBooks(event)">
+            <div class="relative">
+              <input
+                type="search"
+                id="search-input"
+                class="block w-full p-4 pl-10 text-sm text-gray-900 bg-gray-50 rounded-xl border dark:bg-gray-700 dark:text-white"
+                placeholder="Search for books..."
+              />
+
+              <button
+                type="submit"
+                class="absolute right-2.5 bottom-2.5 bg-[#8BAE66] text-white px-4 py-2 rounded-lg"
+              >
+                Search
+              </button>
+            </div>
+          </form>
+          <div class="flex flex-wrap gap-3 mb-6 items-center">
+            <select
+              id="sort-filter"
+              class="p-2 text-sm rounded border bg-white dark:bg-gray-700 dark:text-white"
+            >
+              <option value="relevance">Relevance</option>
+              <option value="title-asc">Title (A-Z)</option>
+              <option value="title-desc">Title (Z-A)</option>
+              <option value="year-new">Newest</option>
+              <option value="year-old">Oldest</option>
+            </select>
+
+            <label
+              class="text-sm text-gray-600 dark:text-gray-300 flex items-center gap-2"
+            >
+              <input type="checkbox" id="has-cover" />
+              Has Cover Only
+            </label>
+          </div>
+          <div
+            id="book-results"
+            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          ></div>
+        </div>
+      </main>
+    </div>
+
+    <script src="javascript/dashboard.js"></script>
+  </body>
+</html>

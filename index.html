@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Literary Oasis | Homepage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen bg-[#cfd4d6]">
+    <header>
+      <nav
+        class="flex items-center justify-between flex-wrap bg-[#111214] py-4 lg:px-12 shadow border-solid"
+      >
+        <div
+          class="flex justify-between lg:w-auto w-full items-center pl-6 pr-6 lg:border-b-0 border-solid border-b-2 border-gray-700 pb-5 lg:pb-0"
+        >
+          <div
+            class="flex items-center flex-shrink-0 mr-16 text-white text-2xl font-bold"
+          >
+            <a href="index.html">
+              <h1>Literary<span class="text-[#8BAE66]"> Oasis</span></h1>
+            </a>
+          </div>
+
+          <div class="block lg:hidden">
+            <button
+              id="nav-toggle"
+              class="flex items-center px-3 py-2 border-2 rounded text-[#FFCB9B] border-[#FFCB9B] hover:text-white hover:border-white"
+            >
+              <svg
+                class="fill-current h-3 w-3"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>Menu</title>
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div
+          id="nav-menu"
+          class="hidden w-full lg:block flex-grow lg:flex lg:items-center lg:w-auto lg:px-3 px-8 text-center"
+        >
+          <div class="text-md font-bold text-[#8BAE66] lg:flex-grow">
+            <a
+              href="#about"
+              class="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 lg:mr-4"
+              >About Us</a
+            >
+
+            <a
+              href="#contact"
+              class="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700"
+              >Contact Us</a
+            >
+          </div>
+          <div
+            class="flex flex-col lg:flex-row items-center justify-center mt-4 lg:mt-0"
+          >
+            <a
+              href="signup.html"
+              class="block text-md px-4 py-2 rounded text-[#8BAE66] font-bold hover:text-white hover:bg-blue-700"
+              >Sign Up</a
+            >
+            <a
+              href="login.html"
+              class="block text-md px-4 lg:ml-2 py-2 rounded text-[#8BAE66] font-bold hover:text-white hover:bg-blue-700"
+              >Login</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section
+      class="flex-grow flex flex-col items-center justify-center pb-48 text-center text-white px-4 bg-[#111214]/60 bg-blend-overlay bg-[url('https://images.unsplash.com/photo-1623771702528-560e89b7b556?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center min-h-screen"
+    >
+      <h1
+        class="font-berkshire text-[45px] leading-[52px] md:text-6xl md:leading-[65px] mt-20 max-w-4xl font-bold"
+      >
+        Welcome to your home of literacy essentials!
+      </h1>
+
+
+      <a
+        href="dashboard.html"
+        class="inline-flex items-center justify-center bg-white text-slate-800 hover:bg-[#FFCB9B] hover:scale-105 transition-all duration-300 px-10 h-14 mt-10 rounded-full font-bold shadow-lg"
+      >
+        Browse Books
+      </a>
+    </section>
+    <article id="about" class="py-16 bg-white flex-grow">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center">
+          <h2 class="text-4xl font-bold text-black">About Us</h2>
+          <p class="mt-4 text-gray-700 max-w-2xl mx-auto">
+            Literary Oasis is dedicated to connecting readers and fostering a
+            love of books. Our mission is to create a welcoming space where
+            stories are shared, knowledge is celebrated, and communities thrive.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div
+            class="bg-white border-2 border-black rounded-lg p-6 transform transition duration-300 hover:scale-105 hover:shadow-xl"
+          >
+            <h3 class="text-xl font-bold text-black text-center">
+              Our Mission
+            </h3>
+            <p class="mt-2 text-gray-700 text-center">
+              To inspire a lifelong love of reading by providing access to
+              diverse books and literary resources for everyone.
+            </p>
+          </div>
+
+          <div
+            class="bg-white border-2 border-black rounded-lg p-6 transform transition duration-300 hover:scale-105 hover:shadow-xl"
+          >
+            <h3 class="text-xl font-bold text-black text-center">Our Vision</h3>
+            <p class="mt-2 text-gray-700 text-center">
+              To build a vibrant community of readers, writers, and learners who
+              support and share knowledge with one another.
+            </p>
+          </div>
+
+          <div
+            class="bg-white border-2 border-black rounded-lg p-6 transform transition duration-300 hover:scale-105 hover:shadow-xl"
+          >
+            <h3 class="text-xl font-bold text-black text-center">Our Values</h3>
+            <p class="mt-2 text-gray-700 text-center">
+              Community, accessibility, and a passion for storytelling guide
+              everything we do at Literary Oasis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <hr class="border-t-2 border-[#8BAE66] w-3/4 mx-auto my-12">
+    <section id="contact" class="py-16 bg-white flex-grow">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+ 
+        <div class="text-center mb-12">
+          <h1 class="text-4xl font-bold text-black">Contact Us</h1>
+          <p class="mt-4 text-gray-700 max-w-2xl mx-auto">
+            Have a question, or just want to comment about something?
+            We'd love to hear from you.
+          </p>
+        </div>
+
+       
+        <div class="flex justify-center">
+ 
+          <form class="w-full max-w-md flex flex-col border-2 border-[#8BAE66] rounded-lg p-6 shadow-md bg-white">
+            <h2 class="text-black text-2xl mb-1 font-bold">Feedback</h2>
+            <p class="leading-relaxed mb-5 text-gray-700">
+              Fill the contact form below 👇
+            </p>
+
+            <div class="relative mb-4">
+              <label for="name" class="leading-7 text-sm font-bold">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="w-full bg-white rounded border-2 border-black focus:border-blue-700 focus:ring-1 focus:ring-blue-700 text-base outline-none text-black py-1 px-3 leading-8 transition-colors"
+              />
+            </div>
+
+            <div class="relative mb-4">
+              <label for="email" class="leading-7 text-sm font-bold"
+                >Email 📧</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="w-full bg-white rounded border-2 border-black focus:border-blue-700 focus:ring-1 focus:ring-blue-700 text-base outline-none text-black py-1 px-3 leading-8 transition-colors"
+              />
+            </div>
+
+            <div class="relative mb-4">
+              <label for="message" class="leading-7 text-sm font-bold"
+                >Message</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                class="w-full bg-white rounded border-2 border-black focus:border-blue-700 focus:ring-1 focus:ring-blue-700 h-32 text-base outline-none text-black py-1 px-3 resize-none leading-6 transition-colors"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="text-[#8BAE66] bg-[#2C3531] border-0 py-2 px-6 hover:bg-blue-700 hover:text-white rounded text-lg font-bold transition-all"
+            >
+              Submit Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+ <footer class="bg-[#111214] text-white py-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+
+    <!-- Logo -->
+    <h2 class="text-2xl font-bold">
+      Literary<span class="text-[#8BAE66]"> Oasis</span>
+    </h2>
+
+    <!-- Links -->
+    <div class="flex justify-center space-x-6 mt-4 text-[#8BAE66] font-semibold">
+      <a href="#about" class="hover:text-white transition">About</a>
+      <a href="#contact" class="hover:text-white transition">Contact</a>
+      <a href="faq.html" class="hover:text-white transition">FAQ</a>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="flex justify-center space-x-8 mt-6 text-xl">
+      <a href="mailto:youremail@example.com" class="hover:text-[#8BAE66] transition">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://facebook.com" target="_blank" class="hover:text-[#8BAE66] transition">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="https://x.com" target="_blank" class="hover:text-[#8BAE66] transition">
+        <i class="fab fa-x-twitter"></i>
+      </a>
+      <a href="https://github.com" target="_blank" class="hover:text-[#8BAE66] transition">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+
+    <!-- Copyright -->
+    <p class="text-gray-400 text-sm mt-6">
+      © 2026 Literary Oasis. All rights reserved.
+    </p>
+
+  </div>
+</footer>
+  </body>
+</html>
