@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navRight = document.getElementById("nav-right");
   const logoutBtn = document.getElementById("logout-btn");
 
-  // NAVBAR
+  // Navbar
   if (navRight) {
     if (user && isLoggedIn) {
       const username = user.email.split("@")[0];
@@ -27,12 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // LOGOUT VISIBILITY
+  // Logout
   if (logoutBtn) {
     logoutBtn.style.display = user && isLoggedIn ? "flex" : "none";
   }
 
-  // LOAD BOOKS
+  // Load books
   displayBorrowedBooks();
 });
 
@@ -49,13 +49,13 @@ function toggleSidebar() {
     .forEach((el) => el.classList.toggle("hidden"));
 }
 
-// DARK MODE
+// Dark mode
 
 function toggleDarkMode() {
   document.documentElement.classList.toggle("dark");
 }
 
-// DISPLAY BORROWED BOOKS
+// Display borrowed books
 
 function displayBorrowedBooks() {
   const container = document.getElementById("borrowed-container");
@@ -65,7 +65,7 @@ function displayBorrowedBooks() {
 
   const books = JSON.parse(localStorage.getItem("borrowedBooks")) || [];
 
-  // BLOCK GUESTS
+  // Block guests
   if (!user || !isLoggedIn) {
     container.innerHTML = `
             <p class="text-gray-500 col-span-full">
@@ -75,7 +75,7 @@ function displayBorrowedBooks() {
     return;
   }
 
-  // EMPTY STATE
+  // Empty state
   if (books.length === 0) {
     container.innerHTML = `
             <p class="text-gray-500 col-span-full">
@@ -159,7 +159,7 @@ function displayBorrowedBooks() {
   });
 }
 
-// RETURN BOOK
+// Return book
 
 function returnBook(index) {
   const books = JSON.parse(localStorage.getItem("borrowedBooks")) || [];
@@ -172,7 +172,7 @@ function returnBook(index) {
   displayBorrowedBooks();
 }
 
-// LOGOUT
+// Logout
 function logout() {
     localStorage.setItem('isLoggedIn', 'false');
     window.location.href = "index.html";

@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const navRight = document.getElementById('nav-right');
     const logoutBtn = document.getElementById('logout-btn');
 
-    // NAVBAR 
+    // Navbar
     if (navRight) {
         if (user && isLoggedIn) {
             const username = user.email.split('@')[0];
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // SHOW/HIDE Logout button
+    // Show/hide Logout button
     if (logoutBtn) {
         logoutBtn.style.display = (user && isLoggedIn) ? "flex" : "none";
     }
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// ✅ SIDEBAR (from first version)
+// sidebar
 function toggleSidebar() {
   const sidebar = document.getElementById("sidebar");
   const icon = document.getElementById("toggle-icon");
@@ -54,13 +54,13 @@ function toggleSidebar() {
 }
 
 
-// DARK MODE
+// Dark mode
 function toggleDarkMode() {
   document.documentElement.classList.toggle("dark");
 }
 
 
-// LOAD DEFAULT BOOKS
+// default look
 async function loadDefaultBooks() {
     const container = document.getElementById("book-results");
 
@@ -83,7 +83,7 @@ async function loadDefaultBooks() {
 }
 
 
-// SEARCH BOOKS
+// Search books
 async function searchBooks(event) {
     if (event) event.preventDefault();
 
@@ -111,7 +111,7 @@ async function searchBooks(event) {
 }
 
 
-// FILTER + SORT
+// Filter and sort
 function renderBooks() {
     const container = document.getElementById("book-results");
 
@@ -186,12 +186,12 @@ function renderBooks() {
 }
 
 
-// FILTER EVENTS
+// Filter
 document.getElementById("sort-filter")?.addEventListener("change", renderBooks);
 document.getElementById("has-cover")?.addEventListener("change", renderBooks);
 
 
-// BORROW BOOK 
+// Borrow books 
 function orderBook(title, author, cover) {
 
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
@@ -236,7 +236,7 @@ function orderBook(title, author, cover) {
 }
 
 
-// LOGOUT (your chosen version)
+// Logout
 function logout() {
     localStorage.setItem('isLoggedIn', 'false');
     window.location.href = "index.html";

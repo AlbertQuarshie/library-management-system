@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const password = document.getElementById("password").value;
     const cpassword = document.getElementById("cpassword").value;
 
-    // Check passwords match
+    // Check if passwords match
     if (password !== cpassword) {
       alert("Passwords do not match!");
       return;
