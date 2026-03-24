@@ -1,5 +1,22 @@
 let allBooks = [];
 
+// Toast function
+function showToast(message, type = "success") {
+  const toast = document.getElementById("toast");
+
+  if (!toast) return;
+
+  toast.textContent = message;
+
+  toast.classList.remove("show", "success", "error");
+  void toast.offsetWidth;
+  toast.classList.add("show", type);
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 5000);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const user = JSON.parse(localStorage.getItem('user'));
@@ -30,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Show/hide Logout button
+    // Logout button
     if (logoutBtn) {
         logoutBtn.style.display = (user && isLoggedIn) ? "flex" : "none";
     }
@@ -39,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// sidebar
+// Sidebar
 function toggleSidebar() {
   const sidebar = document.getElementById("sidebar");
   const icon = document.getElementById("toggle-icon");
@@ -60,13 +77,11 @@ function toggleDarkMode() {
 }
 
 
-// default look
+// Load default books
 async function loadDefaultBooks() {
     const container = document.getElementById("book-results");
 
-    container.innerHTML = `
-        <p class="text-gray-500 col-span-full">Loading books...</p>
-    `;
+    container.innerHTML = `<p class="text-gray-500 col-span-full">Loading books...</p>`;
 
     try {
         const response = await fetch(`https://openlibrary.org/search.json?q=programming`);
@@ -76,9 +91,7 @@ async function loadDefaultBooks() {
         renderBooks();
 
     } catch (error) {
-        container.innerHTML = `
-            <p class="text-red-500 col-span-full">Failed to load books.</p>
-        `;
+        showToast("Failed to load books.", "error");
     }
 }
 
@@ -90,11 +103,12 @@ async function searchBooks(event) {
     const query = document.getElementById("search-input").value;
     const container = document.getElementById("book-results");
 
-    if (!query) return;
+    if (!query) {
+        showToast("Enter something to search!", "error");
+        return;
+    }
 
-    container.innerHTML = `
-        <p class="text-gray-500 col-span-full">Searching for "${query}"...</p>
-    `;
+    container.innerHTML = `<p class="text-gray-500 col-span-full">Searching...</p>`;
 
     try {
         const response = await fetch(`https://openlibrary.org/search.json?q=${query}`);
@@ -104,14 +118,12 @@ async function searchBooks(event) {
         renderBooks();
 
     } catch (error) {
-        container.innerHTML = `
-            <p class="text-red-500 col-span-full">Error fetching books.</p>
-        `;
+        showToast("Error fetching books.", "error");
     }
 }
 
 
-// Filter and sort
+// Render books
 function renderBooks() {
     const container = document.getElementById("book-results");
 
@@ -143,9 +155,7 @@ function renderBooks() {
     container.innerHTML = "";
 
     if (books.length === 0) {
-        container.innerHTML = `
-            <p class="text-gray-500 col-span-full">No books found.</p>
-        `;
+        container.innerHTML = `<p class="text-gray-500 col-span-full">No books found.</p>`;
         return;
     }
 
@@ -160,9 +170,9 @@ function renderBooks() {
             : "https://via.placeholder.com/150x225?text=No+Cover";
 
         const card = `
-            <div class="bg-white dark:bg-gray-700 p-4 rounded-xl shadow border dark:border-gray-600 flex flex-col">
+            <div class="bg-white dark:bg-gray-700 p-4 rounded-xl shadow border flex flex-col">
 
-                <div class="w-full h-48 overflow-hidden rounded-md mb-3 bg-gray-200 dark:bg-gray-600">
+                <div class="w-full h-48 overflow-hidden rounded-md mb-3 bg-gray-200">
                     <img src="${coverUrl}" class="w-full h-full object-contain">
                 </div>
 
@@ -186,38 +196,38 @@ function renderBooks() {
 }
 
 
-// Filter
+// Filters
 document.getElementById("sort-filter")?.addEventListener("change", renderBooks);
 document.getElementById("has-cover")?.addEventListener("change", renderBooks);
 
 
-// Borrow books 
+// Borrow book
 function orderBook(title, author, cover) {
 
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     const user = JSON.parse(localStorage.getItem('user'));
 
     if (!isLoggedIn || !user) {
-        alert("Please login first!");
-        window.location.href = "login.html";
+        showToast("Please login first!", "error");
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 1500);
         return;
     }
 
     const borrowed = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
 
     if (borrowed.length >= 5) {
-        alert("You can only borrow up to 5 books.");
+        showToast("You can only borrow up to 5 books.", "error");
         return;
     }
 
     if (borrowed.some(b => b.title === title)) {
-        alert("You already borrowed this book.");
+        showToast("You already borrowed this book.", "error");
         return;
     }
 
-    const confirmBorrow = confirm(`Borrow "${title}"`);
-    if (!confirmBorrow) return;
-
+    // Borrow directly (no confirm popup)
     const borrowDate = new Date();
     const returnDate = new Date();
     returnDate.setDate(borrowDate.getDate() + 14);
@@ -232,12 +242,16 @@ function orderBook(title, author, cover) {
 
     localStorage.setItem('borrowedBooks', JSON.stringify(borrowed));
 
-    alert("Book borrowed successfully!");
+    showToast(`"${title}" borrowed successfully!`, "success");
 }
 
 
 // Logout
 function logout() {
     localStorage.setItem('isLoggedIn', 'false');
-    window.location.href = "index.html";
+    showToast("Logged out successfully", "success");
+
+    setTimeout(() => {
+        window.location.href = "index.html";
+    }, 1500);
 }
