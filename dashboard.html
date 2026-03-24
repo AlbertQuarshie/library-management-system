@@ -9,9 +9,41 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+    
     <script>
       tailwind.config = { darkMode: "class" };
     </script>
+     <style>
+    .toast {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 8px;
+      padding: 12px;
+      position: fixed;
+      z-index: 1000;
+      bottom: 30px;
+      right: 30px;
+      font-size: 16px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .toast.show {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .toast.success {
+      background-color: #8BAE66;
+    }
+
+    .toast.error {
+      background-color: #dc3545;
+    }
+  </style>
   </head>
 
   <body
@@ -189,7 +221,7 @@
         </div>
       </main>
     </div>
-
+<div id="toast"class="toast"></div>
     <script src="javascript/dashboard.js"></script>
   </body>
 </html>
