@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Navbar
     if (navRight) {
         if (user && isLoggedIn) {
-            const username = user.email.split('@')[0];
+            const username = user.name;
 
             navRight.innerHTML = `
                 <span class="text-sm font-semibold text-white">
