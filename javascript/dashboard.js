@@ -227,7 +227,10 @@ function orderBook(title, author, cover) {
         return;
     }
 
-    // Borrow directly (no confirm popup)
+    if (!confirm(`Are you sure you want to borrow "${title}"?`)) {
+        return;
+    }
+
     const borrowDate = new Date();
     const returnDate = new Date();
     returnDate.setDate(borrowDate.getDate() + 14);
